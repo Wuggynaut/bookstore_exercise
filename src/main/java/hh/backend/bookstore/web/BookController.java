@@ -43,9 +43,15 @@ public class BookController {
         return "redirect:booklist";
     }
 
-    @GetMapping("/deletebook/{isbn}")
-    public String deleteBook(@PathVariable("isbn") String isbn, Model model) {
-        bookRepository.deleteById(isbn);
+    @GetMapping("/deletebook/{id}")
+    public String deleteBook(@PathVariable("id") Long id, Model model) {
+        bookRepository.deleteById(id);
         return "redirect:../booklist";
+    }
+
+    @GetMapping("/editbook/{id}")
+    public String editBook(@PathVariable("id") Long id, Model model) {
+        model.addAttribute("book", bookRepository.findById(id));
+        return "editbook";
     }
 }
