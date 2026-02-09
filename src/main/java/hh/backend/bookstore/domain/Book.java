@@ -1,10 +1,15 @@
 package hh.backend.bookstore.domain;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
+@Entity
 public class Book {
+    @Id
+    private String isbn;
     private String title;
     private String author;
     private int publicationYear;
-    private String isbn;
     private double price;
 
     public Book() {
