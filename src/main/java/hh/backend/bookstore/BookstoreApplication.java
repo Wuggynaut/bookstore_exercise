@@ -25,12 +25,17 @@ public class BookstoreApplication {
 	public CommandLineRunner exampleData(BookRepository bookRepository, CategoryRepository categoryRepository) {
 		return (args) -> {
 			log.info("save example books and categories");
-			bookRepository.save(new Book("A Door Into Ocean", "Joan Slonczewski", 1986, "9780312876524", 17.85));
-			bookRepository.save(new Book("Alien Clay", "Adrian Tchaikovsky", 2024, "9780316578974", 17.25));
-			bookRepository.save(new Book("The Metamorphosis", "Franz Kafka", 1915, "9780553213690", 9.40));
-			categoryRepository.save(new Category("Science Fiction"));
-			categoryRepository.save(new Category("Literary Fiction"));
-			categoryRepository.save(new Category("Fantasy"));
+
+			Category scifi = new Category("Science Fiction");
+			categoryRepository.save(scifi);
+			Category litfic = new Category("Literary Fiction");
+			categoryRepository.save(litfic);
+			Category fantasy = new Category("Fantasy");
+			categoryRepository.save(fantasy);
+
+			bookRepository.save(new Book("A Door Into Ocean", "Joan Slonczewski", 1986, "9780312876524", 17.85, scifi));
+			bookRepository.save(new Book("Alien Clay", "Adrian Tchaikovsky", 2024, "9780316578974", 17.25, scifi));
+			bookRepository.save(new Book("The Metamorphosis", "Franz Kafka", 1915, "9780553213690", 9.40, litfic));
 
 			log.info("fetch all books");
 			for (Book book : bookRepository.findAll()) {
