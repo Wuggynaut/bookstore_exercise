@@ -43,6 +43,10 @@ public class Category {
         this.books = books;
     }
 
+    public Long getCategoryid() {
+        return categoryid;
+    }
+
     @Override
     public String toString() {
         return "Category [categoryid=" + categoryid + ", name=" + name + "]";
